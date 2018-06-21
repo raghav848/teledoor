@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- saved from url=(0117)file:///C:/Users/Dell/Desktop/node/p3/sample.html?value1=10&value2=10&Options=Select+your+options+from+here&sb=Submit -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title></title>
+	
+</head>
+<body>
+	<form action="file:///C:/Users/Dell/Desktop/node/p3/sample.html?value1=10&amp;value2=10&amp;Options=Select+your+options+from+here&amp;sb=Submit"> 
+		Enter first value:
+		<input type="number" name="value1"><br><br>
+		Enter second value:
+		<input type="number" name="value2"><br><br>
+		Options:
+		<select name="Options" id="optionId">
+			<option>
+				Select your options from here
+			</option>
+			<option>
+				+
+			</option>
+			<option>
+				-
+			</option>
+			<option>
+				*
+			</option>
+			<option>
+				/
+			</option>
+		</select>
+		<br><br>
+		<input type="submit" name="sb" onclick="fun() id=" sbid"="">
+	</form>
+	<script>
+		function fun(){
+		   if(document.getElementById("optionId").options[0].value=="Select your options from here"){
+                  document.getElementById("sbId").disabled=true;
+                  
+		   }
+
+		}
+	</script>
+
+</body></html>
