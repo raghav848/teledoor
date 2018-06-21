@@ -1,0 +1,531 @@
+<%- include header %>
+<style>
+  .paddingtopbottom
+  {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+  .sub-heading
+  {
+    font-size: 25px;
+    color: #f4511e;
+  }
+</style>
+<!-- hero image-->
+
+<script>
+    function f()
+    {
+    var x = document.getElementById('s');
+    document.getElementById('s').value =x.value.toUpperCase(); ;
+    }
+</script>
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1 style="font-size:30px">Latest Movies & T.V Series</h1>
+      <br>
+        <form  action="/search" method="get">
+          <div class="input-group">
+            <input type="text" class="form-control input-lg" placeholder="Search" name="s" id='s'>
+              <div class="input-group-btn">
+                <button class="btn btn-default btn-lg " type="submit" onclick="f()">
+                 <i class="glyphicon glyphicon-search" style="padding: 2px;"></i>
+                </button>
+              </div>
+          </div>
+        </form>
+    </div>
+  </div>
+<!-- hero image end -->
+
+
+<!-- uploads tstart -->
+<div class="container-fluid paddingtopbottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="sub-heading">Uploads:</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="customNavigation" style="text-align: right;">
+          <a class="btn prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+          <a class="btn next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="owl-carousel owl-theme">
+          <% for(var i=0;i< data.length;i++){ %>
+          <div class="item">
+          <div style="position: relative;" class="image">
+          <h4 style="position: absolute;z-index: 10;background-color: black;color: white;right: 0px;bottom: 0.1em;padding: 5px;"><%= data[i].duration %> </h4>
+          <a  href="play/<%= data[i].id %>"><img src="<%= data[i].image %>"  style="border-radius: 4px; border-radius: 5px;box-shadow: 0px  0px 25px grey;"  >
+          <div class="overlay">
+                <i class="far fa-play-circle"></i>
+          </div>
+          </a>
+          </div>
+          <div style="margin-top: 2em;position: relative;">
+          <h3 style="font-weight: bold;font-size:18px;min-height:40px;"><%= data[i].title %></h3> 
+          <p><span class=" fa fa-eye view-icon" style="color: #5e120d"></span> <%= data[i].views %> Views </p>
+          </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- uploads end -->
+
+<!-- latest movies start -->
+<div class="container-fluid paddingtopbottom bg-grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="sub-heading">Latest Movies:</h2>
+      </div>
+    </div>
+    <br>
+    <% 
+    c = 1;
+    for(var i=0;i< data1.length;i++){ %>
+      <% if (c == 1 || c == 6){ %>
+        <div class="row">
+      <% } %>
+        <div class="col-md-2" style="margin-top: 1em;">
+          <div>
+            <a href="/mplay/<%= data1[i].Pid%>" class="image1">
+              <img class="img-responsive" src="<%= data1[i].Pimge %>" style = "width:100%;height: 250px;border-radius: 5px;box-shadow: 0px 0px 25px grey;">      
+              <h3 style="font-weight: bold;font-size:18px;min-height:40px;text-transform: uppercase;margin-top: 1em;margin-bottom: 1em;"> <%= data1[i].Pname %> </h3>
+            </a>
+          </div>
+        </div>
+      <% 
+      if(c == 6 || c == 11)
+      {
+        %>
+        </div>
+        <%
+      }
+      c++; 
+    } 
+    %>
+  </div>
+</div>
+<!-- latest movie edn -->
+
+
+<!-- latest tv show start -->
+<div class="container-fluid paddingtopbottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="sub-heading">Latest T.V. Shows</h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+    <% for(var i=0;i< data2.length;i++){ %>
+        <div class="col-md-2">
+          <div>
+            <a href="/tplay/<%= data2[i].Pid %>" class="image1">
+              <img class="img-responsive" src="<%= data2[i].Pimge %>" style = "width:100%;height: 250px;border-radius: 5px;box-shadow: 0px 0px 25px grey;">
+                
+              <div class="titleText" >
+              <h4> <%= data2[i].Pname %> </h4>
+            </div>
+            </a>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+<!-- latest tv shows end -->
+
+
+<!-- tagline start -->
+<div class="container-fluid text-center" style="background-image:url('images/smily.jpg');background-size: 100% 100%; background-attachment: fixed;padding-top: 70px;padding-bottom: 70px;">
+  <div class="container">
+    <div class="row">
+      <!-- 1st Count up item -->
+      <div class="col-md-4 col-sm-12">
+        <div style="line-height: 50px;">
+          <span class="counter-item"  data-from="0" data-to="964" style="font-size: 40px; color: white;">964</span>
+          <h2 style="color:white;font-weight: bolder;font-size: 40px;">Movies</h2>
+        </div>
+      </div>
+
+      <!-- 2nd Count up item -->
+      <div class="col-md-4 col-sm-12">
+        <div style="line-height: 50px;">
+          <span class="counter-item" data-from="0" data-to="743" style="font-size: 40px; color: white;">743</span>
+          <h2 style="color:white;font-weight: bolder;font-size: 40px;">TV Shows</h2>
+        </div>
+      </div>
+
+      <!-- 3rd Count up item -->
+      <div class="col-md-4 col-sm-12">
+        <div style="line-height: 50px;">
+          <span class="counter-item" data-from="0" data-to="1207" style="font-size: 40px; color: white;">1207</span>
+          <h2 style="color:white;font-weight: bolder;font-size: 40px;">Users</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- tagline end -->
+
+<!-- membership start -->
+<div class="container-fluid paddingtopbottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="sub-heading">Pricing</h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <% for (var i=0;i< data3.length;i++){ %>
+          <div class="col-md-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                  <h1><%= data3[i].Pay_title %></h1>
+                </div>
+                <div class="panel-body">
+                    <p><strong><%= data3[i].Pay_uploadsmonth %></strong> uploads per month</p>
+                    <p><strong>For <%= data3[i].Pay_duration_months %></strong>
+                    <% if ( data3[i].Pay_duration_months < 2 ) { %>
+                       month only 
+                     <% } else { %>
+                      months only 
+                      <% } %>
+                    </p>
+                </div>
+                <div class="panel-footer">
+                    <h3>&#8377 <%= data3[i].Pay_price %></h3>
+                    <h4>per month</h4>
+                    <a href="/payment/<%= data3[i].Pay_id %>"><button class="btn btn-lg">Buy Now</button></a>
+              </div>
+            </div> 
+          </div>
+      <% } %>
+    </div>  
+  </div>
+</div>
+<!-- membership end -->
+
+
+<%- include footer%>
+</body>
+<style type="text/css">
+  
+.svg-inline--fa.fa-w-16
+{
+      margin-left: 40%;
+    margin-top: 15%;
+}
+
+.owl-pagination{
+        display: none;
+}
+.customNavigation a{
+    color: #fff;
+}
+.customNavigation .btn{
+    border-radius: 0;
+    background-color: #7B797A;
+    font-size: 13px;
+    padding: 0 6px;
+}
+.owl-carousel .owl-item img{
+    margin: 0 auto;
+}
+
+  /*.owl-prev 
+        {
+          float: left;background: #35404f !important;
+        padding: 10px !important;
+        opacity: 1 !important;
+        color: white !important;
+        font-size: 20px;
+        }
+        .owl-next
+        {
+          float: right;
+          background: #35404f !important;
+        padding: 10px !important;
+        opacity: 1;
+        color: white !important;
+        font-size: 20px;
+        }
+   .owl-theme .owl-nav {
+    top: 25%;
+    z-index: 18;
+    position: absolute;
+    width: 100%;
+}*/
+  #c{
+    margin-bottom: 30px;
+  }
+
+  .m{
+    padding-left: 0px;
+  }
+
+.i{
+  margin-top: 10px;
+  padding: 30px;
+
+}
+.titleText{
+    
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: 'Open Sans';
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+    margin: 0;
+}
+.c{
+float: left;
+    background-image: url(images/smily.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    padding-top: 3em;
+    padding-bottom: 5em;
+}
+
+.c h4{
+   font-size: 30px;
+}
+.c img{
+  border-radius: 5px;
+}
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .hero-image {
+      background-image: url("images/backg.jpeg");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      background-attachment: fixed;
+    }
+
+    .hero-text {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+
+    .hero-text button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 10px 25px;
+      color: black;
+      background-color: #ddd;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hero-text button:hover {
+      background-color: #555;
+      color: white;
+    }
+
+    .middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+ .image1:hover {
+
+  opacity: 0.3;
+}
+
+.image1 {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle:hover {
+  opacity: 1;
+}
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.overlay:hover{
+  opacity: 1;
+}
+
+.overlay {
+  font-size: 60px;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  color: #5e120d;
+  transition: 0.3 ease;
+}
+
+
+
+
+
+.image:hover {
+    opacity: 0.8;
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+   animation: shake 0.5s; 
+      animation-iteration-count: infinite; 
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+}
+
+</style>
+
+</html>
+
+
+ <!--
+
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+      <a href=""><img src="images/1.png" class="img-responsive" style="width: 100%;"></a>
+      <div class="m">
+        COLUMN 2
+      </div>
+      <div class="m">
+        Views
+      </div>
+    </div>
+
+ 
+
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+        <a href=""><img src="images/1.png" class="img-responsive" style="width: 100%;"></a>
+        <div class="m">
+           COLUMN 2
+        </div>
+        <div class="m">
+        Views
+       </div>
+        </div>
+
+
+
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+      <img src="images/1.png" style="width: 100%;">
+            <div class="m">
+           COLUMN 2
+      </div>
+        <div class="m">
+      Views
+       </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+      <a href=""><img src="images/1.png" class="img-responsive" style="width: 100%;"></a>
+      <div class="m">
+        COLUMN 2
+      </div>
+      <div class="m">
+        Views
+      </div>
+    </div>
+
+ 
+
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+      <a href=""><img src="images/1.png" class="img-responsive" style="width: 100%;"></a>
+      <div class="m">
+        COLUMN 2
+      </div>
+      <div class="m">
+        Views
+      </div>
+    </div>
+
+ 
+
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+        <a href=""><img src="images/1.png" class="img-responsive" style="width: 100%;"></a>
+        <div class="m">
+           COLUMN 2
+        </div>
+        <div class="m">
+        Views
+       </div>
+        </div>
+
+
+
+    <div class="col-lg-3 col-sm-12 col-md-6 i">
+      <h4 style="position: absolute;background: black;color: white;padding: 3px;right: 15px;bottom: 30px;">HELLO</h4>
+      <img src="images/1.png" style="width: 100%;">
+            <div class="m">
+           COLUMN 2
+      </div>
+        <div class="m">
+      Views
+       </div>
+    </div>
+--> 

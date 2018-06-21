@@ -1,0 +1,100 @@
+<%- include header %>
+
+
+<div class="container">
+    <div class="col-md-12" style="margin-top: 100px;
+         margin-bottom: 20px;" >
+       <video  controls style="margin-top: 10px; width: 100%" autoplay="autoplay">
+       <source id="s"  src="<%= data[0].url %>" type= "video/mp4" >
+      </video>
+    </div>
+</div>
+<div class="container">
+     <div id="episodeDivColor" style="margin-top: 10px; margin-bottom: 20px;">
+        <div>
+          <h3>Episodes 
+            <% 
+            for(var i=0;i< data.length;i++) 
+            { 
+            %>
+             <button  class="btn " value="<%= data[i].url %>"><%= i+1 %></button> </a>
+            <% } %>
+        </div>
+
+        <div style="float: left;">
+          <img src="/<%= data[0].Pimge %>"  style="width:100px;box-shadow: 0px 0px 10px yellow">
+        </div>
+
+        <div id="heading">
+          <h4>Heading</h4>
+          <p class="heading_para"><%= data[0].Pdesc %></p>
+        </div>
+    </div>
+    
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".btn").on("click",function()
+  {
+    var x = $(this).attr("value");
+    $("#s").attr("src",x);
+  });
+  $('#s').load(document.URL +  ' #thisdiv');
+});
+  // function test(t)
+  // {
+  //   var t = t.value;
+  //   document.getElementById('s').src = t;
+  //   window.onload()
+  // }
+</script>
+
+<%- include footer %>
+</body>
+<style>
+
+    .pb-cmnt-textarea {
+        resize: none;
+        padding: 20px;
+        height: 130px;
+        width: 100%;
+        border: 1px solid #F2F2F2;
+    }
+
+    .heading_para
+    {
+      margin-left: 124px;
+    }
+    #heading h4
+    {
+      padding-left: 20px;
+      margin-left: 103px;
+    }
+
+    #episodeDivColor
+    {
+      background-color: #d6d5d5;
+      width: 800px;
+      padding-left: 15px; 
+      border-radius: 4px;
+      height: 225px;
+      padding-top: 1px;
+    }
+
+    #episodeDivColor button
+    {
+      background-color: #676565;
+      color: white;
+      height: 31px;
+      width: 33px;
+    }
+    #episodeDivColor button:hover
+    {
+      background-color: #464040;
+    
+    }
+
+
+</style>
+</html>

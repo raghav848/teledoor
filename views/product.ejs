@@ -1,0 +1,124 @@
+<% include menu %>
+
+<div class="container">
+
+    <% if(typeof data2 !='undefined'){ %>
+
+      <form action="/viewP/updateProduct/<%= data2[0].Pid %>" method="post" enctype="multipart/form-data">
+
+      <div class="form-group">
+        <label >Product Name</label>
+        <input type="text" name="Pname" class="form-control" value="<%= data2[0].Pname %>">
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label>Product Description</label>
+        <input type="text" name="Pdisc" class="form-control" value="<%= data2[0].Pdesc %>">
+      </div>
+      <br>
+        <div class="form-group">
+           <label>Category</label>
+            <select name="cat" class="form-control" required="required">
+          <option  class="active">Select Category</option>
+           <% for (var i=0;i< data.length;i++){ %>
+          <option value="<%= data[i].Cid %>"><%= data[i].Cname %></option>       
+            <%}%> 
+          
+        </select>
+        </div>
+        <br>  
+
+     <!--  <div class="form-group">
+        <label>User Id</label>
+        <input type="number" name="Uid" class="form-control">
+      </div>
+      <br>
+ -->
+      <div class="form-group">
+        <label>Product image</label>
+        <input type="file" name="Pimge" class="form-control" value="<%= data2[0].Pimge %>">
+      </div>
+      <br>
+
+<div class="form-group">
+   <label>Product Status</label>
+    <select name="Pstatus" class="form-control">
+  <option  class="active">Select</option>
+  <option>active</option>
+  <option>block</option>
+</select>
+</div>
+      <br>      
+
+      <div class="form-group">
+      <input type="submit" name="sbtn" class="btn btn-primary">
+    </div>
+      <br>
+
+  </form>
+  <% } else  {%>
+    <form action="/productform" method="post" enctype="multipart/form-data">
+
+      <div class="form-group">
+          <label >Product Name</label>
+          <input type="text" name="Pname" class="form-control">
+        </div>
+        <br>
+  
+        <div class="form-group">
+          <label>Product Description</label>
+          <input type="text" name="Pdisc" class="form-control">
+        </div>
+        <br>
+          <div class="form-group">
+             <label>Category</label>
+              <select name="cat" class="form-control" required="required">
+            <option  class="active">Select Category</option>
+            <% for (var i=0;i< data.length;i++){ %>
+            <option value="<%= data[i].Cid %>"><%= data[i].Cname %></option>       
+              <%}%> 
+            
+          </select>
+          </div>
+          <br>  
+  
+       <!--  <div class="form-group">
+          <label>User Id</label>
+          <input type="number" name="Uid" class="form-control">
+        </div>
+        <br>
+   -->
+        <div class="form-group">
+          <label>Product image</label>
+          <input type="file" name="Pimge" class="form-control">
+        </div>
+        <br>
+  
+  <div class="form-group">
+     <label>Product Status</label>
+      <select name="Pstatus" class="form-control">
+    <option  class="active">Select</option>
+    <option>active</option>
+    <option>block</option>
+  </select>
+  </div>
+        <br>      
+  
+        <div class="form-group">
+        <input type="submit" name="sbtn" class="btn btn-primary">
+      </div>
+        <br>
+  
+    </form>
+    <% } %>
+</div>
+
+</body>
+
+<style type="text/css">
+  body{
+    background-color: lightgrey;
+  }
+</style>
+</html>

@@ -1,0 +1,21 @@
+<%- include menu %>
+	<form action="/viewC/deleteCategorychecks" method="POST">
+		<table border="2" cellpadding="10" cellspacing="10" width="50%">
+			<% for(var i = 0; i < data.length; i++) { %>
+				<tr>
+					<td> <%= data[i].Cid %> </td>
+					<td> <%= data[i].Cname %> </td>
+					<td> <%= data[i].Cdesc %> </td>
+                    <td> <%= data[i].Cstatus %> </td>
+
+					<td> <a href="/viewC/deleteCategory/<%= data[i].Cid%>">Delete</a> </td>
+					<td> <a href="/viewC/updateCategoryForm/<%= data[i].Cid %>">Update</a> </td>
+
+					<td> <input type="checkbox" name="check" value="<%= data[i].Cid %>"> delete <%= data[i].Cid %> </td>
+				</tr>
+			<% } %>
+		</table><br>
+		<input type="submit" name="submit" value="Delete Selected">
+	</form>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Teledoor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/adminlogin.css">
+  <!-- <script type="text/javascript">
+    if (!!window.performance && window.performance.navigation.type === 2) {
+              // value 2 means "The page was accessed by navigating into the history"
+             
+              window.location.reload(); // reload whole page
+  
+          }
+    </script> -->
+  
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">teledoor</a>
+    </div>
+    <ul class="nav navbar-nav" >
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/add_category">Add Category</a></li>
+            <li><a href="/viewC/viewCategory">View Category</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Product
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/add_product">Add Product</a></li>
+            <li><a href="/viewP/viewProduct">View Product</a></li>
+          </ul>
+        </li>
+     <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Seasons
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/add_season">Add Seasons</a></li>
+            <li><a href="/viewS/viewSeason">View Seasons</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Episodes
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/add_episode">Add Episodes</a></li>
+              <li><a href="/viewE/viewEpisode">View Episodes</a></li>
+            </ul>
+          </li>
+     </ul>
+
+
+     
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span>Welcome ! <%= data1%></a>
+        <ul class="dropdown-menu">
+          <li><a href="/change_password" data-toggle="modal" data-target="#myModal">Change password</a></li>
+        
+        </ul>
+      </li>
+    </ul>    
+  </div>
+</nav>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    
+      <div class="modal-body">  
+          <div class="card card-container">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <img  class="img-rounded" src="/images/adminLogo.png" />
+              <p id="profile-name" class="profile-name-card"></p>
+              <form class="form-signin" method="post" action="/change_password" id = "frm">
+                  <span id="reauth-email" class="reauth-email"></span>
+                  <input type="text" name="inputUser" id="inputUser" class="form-control" value="<%= data1 %>" readonly>
+                  <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
+                  <div id="wrongPassword"></div>
+                  <input type="password" name="inputNewPassword" id="inputNewPassword" class="form-control" placeholder="New Password.." required>
+                  <input type="password" name="inputNewConfirmPassword" id="inputNewConfirmPassword" class="form-control" placeholder="Confirm New Password.." required>
+                  <div id="checkCnfrm"></div>
+                  <button class="btn btn-lg btn-inverse btn-block btn-signin" id="#loginForm" type="submit">Change Password</button>
+                  
+              </form>
+           
+            </div>
+       </div>
+     
+
+<script>
+    
+
+$(document).ready(function(){
+  $("#frm").on("submit",function(){
+
+      var loginData ={'inputUser':$("#inputUser").val(),'inputPassword':$("#inputPassword").val(),'inputNewPassword':$("#inputNewPassword").val(),'inputNewConfirmPassword':$("#inputNewConfirmPassword").val()};
+      if( $('#inputNewPassword').val() != $('#inputNewConfirmPassword').val() )
+      {
+        $("#checkCnfrm").html('<div id="myAlert" class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Note!</strong>Passwords do not match !</div>');
+      } 
+      else if( $('#inputNewPassword').val() == $('#inputNewConfirmPassword').val())
+      {
+        $("#checkCnfrm").hide();
+        $.ajax({
+        url: "/change_password",
+        type: "POST",
+        data: loginData,
+        success: function(data)
+        {
+          console.log(data);
+          if(data == "done")
+          {
+            $('#wrongPassword').hide();
+            window.location = "/logout";
+          }
+          else{
+            $("#wrongPassword").html('<div id="myAlert" class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Note!</strong>' + data +'</div>');
+          }
+        }
+        });
+      }
+    return false;
+   });  
+});
+  </script>
+
+  </div>
+</div>
+
+</div></div>
+

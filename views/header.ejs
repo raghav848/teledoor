@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MOVIES</title>
+  <meta charset="utf-8">
+  <!-- google fonts -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+  
+
+  <!-- bootstrap files start -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- bootstrap files end -->
+
+  
+  <!-- owl carousel start -->
+  
+  <link rel="stylesheet" type="text/css" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" type="text/css" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
+  
+  <!-- owl carousel end -->
+
+
+
+  
+  
+ <!-- Manual css used in this project -->
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="/css/reset.css"> 
+  <link rel="stylesheet" href="/css/style2.css"> 
+  <link rel="stylesheet" type="text/css" href="/css/profile.css">
+  <link rel="stylesheet" type="text/css" href="/css/comment.css">
+  
+  <!-- manual css end -->
+  
+  
+  
+  
+  <!-- Resource jQuery -->
+  <script type="text/javascript" src="/javascript/modernizr.js"></script> <!-- Modernizr -->
+  <script type="text/javascript" src="/javascript/signUp.js"></script>
+         
+    
+  <script type="text/javascript">
+  if (!!window.performance && window.performance.navigation.type === 2) {
+            // value 2 means "The page was accessed by navigating into the history"
+           
+            window.location.reload(); // reload whole page
+
+        }
+  </script>
+  <style>
+    .paddingtopbottom
+    {
+      padding-top: 6em;
+      padding-bottom: 6em;
+    }
+  </style>
+</head>
+<body>
+  <header style="background-color: #0d455e;box-shadow: 0px 0px 6px grey;">
+    <div class="cd-logo"><a href="/"><img src="/images/logo.png"  class="img-responsive" alt="Logo"></a></div>
+
+    <nav class="cd-main-nav-wrapper">
+      <ul class="cd-main-nav">
+        <li><a href="/">Home</a></li> 
+        <li><a href="/membership">How It Works</a></li>
+        
+        <% if( typeof data4!='undefined')
+        { 
+          %>
+              <li><a href="/profile">Welcome! <%= data4 %></a></li>
+        <% 
+      } else { %>
+
+        <li><a href="/signup">Login/SignUp</a></li>
+        <% } %>
+        <li>
+          <a href="#0" class="cd-subnav-trigger"><span>More Action</span></a>
+
+          <ul>
+            <li class="go-back"><a href="#0"></a></li>
+            <li><a href="/">Movies</a></li>
+            <li><a href="/">T.V Series</a></li>
+            <% if( typeof data4!='undefined')
+        { 
+          %>
+              <li><a href="/logout">Logout</a></li>
+        <% 
+      }  %>
+            <li><a href="#0" class="placeholder">Placeholder</a></li>
+          </ul>
+        </li>
+      </ul> <!-- .cd-main-nav -->
+    </nav> <!-- .cd-main-nav-wrapper -->
+    <a href="#0" class="cd-nav-trigger"><span></span></a>
+  </header> 
+    
+    
+
+
+
+  <!-- Resource style -->
+  
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="/css/signUp.css"> --> 
+   <!-- <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'> -->
+  <!-- <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet"> -->

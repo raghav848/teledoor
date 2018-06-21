@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Payment Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Enter Details</h2>
+  <form>
+    
+    <div class="form-group">
+      <label for="Name">Name:</label>
+      <input type="text" class="form-control" id="fname" placeholder="Enter Name" name="fname" readonly value="<%= data[0].fname %>">
+    </div>
+
+
+    <div class="form-group">
+      <label for="Contact Number">Contact Number:</label>
+      <input type="number" class="form-control" id="cno" placeholder="Enter Contact Number" name="cno" readonly value="<%= data[0].cno %>">
+    </div>
+
+    <div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" readonly value="<%= data[0].email %>">
+    </div>
+
+    <div class="form-group">
+      <label for="Address">Address:</label>
+      <textarea class="form-control" id="address" placeholder="Enter address" name="address" readonly > <%= data[0].address %> </textarea>
+    </div>
+</div>
+<hr style=" border-color:black; border-width: 1px;" class="form-group">
+</form>
+
+
+
+
+<form action='/paypal' method='post' name=''>
+<input type='hidden' name='business' value='<?php echo $paypal_id; ?>'>
+<input type='hidden' name='cmd' value='_xclick'>
+<input type='hidden' name='item_name' value='<?php echo $row['product'];?>'>
+<input type='hidden' name='item_number' value='<?php echo $row['pid'];?>'>
+<input type='hidden' name='amount' value='<?php echo $row['price'];?>'>
+<input type='hidden' name='no_shipping' value='1'>
+<input type='hidden' name='currency_code' value='USD'>
+<input type='hidden' name='cancel_return' value='http://yoursite.com/cancel.php'>
+<input type='hidden' name='return' value='http://yoursite.com/success.php'>
+<input type="image" src="https://paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit">
+</form> 

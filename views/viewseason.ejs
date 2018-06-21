@@ -1,0 +1,22 @@
+<%- include menu %>
+	<form action="/viewS/deleteSeasonchecks" method="POST">
+		<table border="2" cellpadding="10" cellspacing="10" width="50%">
+			<% for(var i = 0; i < data.length; i++) { %>
+				<tr>
+                    <td> <%= data[i].Pid %> </td>
+					<td> <%= data[i].Sid %> </td>
+					<td> <%= data[i].Sname %> </td>
+					<td> <%= data[i].Sdesc %> </td>
+                    <td> <%= data[i].Sstatus %> </td>
+
+					<td> <a href="/viewS/deleteSeason/<%= data[i].Sid%>">Delete</a> </td>
+					<td> <a href="/viewS/updateSeasonForm/<%= data[i].Sid %>">Update</a> </td>
+
+					<td> <input type="checkbox" name="check" value="<%= data[i].Sid %>"> delete <%= data[i].Sid %> </td>
+				</tr>
+			<% } %>
+		</table><br>
+		<input type="submit" name="submit" value="Delete Selected">
+	</form>
+</body>
+</html>

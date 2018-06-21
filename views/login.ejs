@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<title>Registration Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- fonts -->
+<link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- /fonts -->
+<!-- css -->
+<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/login_style.css" rel='stylesheet' type='text/css' media="all" />
+<!-- /css -->
+</head>
+<body>
+    <div class="container" style="margin-top: -125px;
+    position: absolute;
+    margin-left: 10px;">
+    <div class="row">
+        <div class="submit-wrapper">
+         <a href="/">TELEDOOR</a>   
+        </div>
+    </div>
+</div>
+<h1 class="w3ls">Login Here !</h1>
+<div class="content-w3ls">
+  <div class="content-agile1">
+    <h2 class="agileits1">TELEDOOR</h2>
+    <p class="agileits2">Enjoy !</p>
+  </div>
+  <div class="content-agile2">
+    <form action="/success" method="post" id="frm">
+      
+      
+      <div class="form-control w3layouts">  
+        <input type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="">
+        
+      </div>
+
+      <div class="form-control agileinfo">  
+        <input type="password" class="lock" name="password" placeholder="Password" id="password1" required="">
+      </div>  
+
+      <input type="submit" class="register" value="Login">
+      <p><span class="eemsg ehidden">Please Enter a Valid Email Address</span></p>
+    </form>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+    
+    $('#frm').on('submit',function(){
+        var loginData ={'email':$("#email").val(),'password':$("#password1").val()};
+        
+        $.ajax({
+            url: "/success",
+            type: "POST",
+            data: loginData,
+            success: function(data)
+            {
+            console.log(data);
+            if(data == "done")
+            {
+                $('.p2emsg').addClass('p2hidden');
+                window.location = "/";
+            }
+            else if(data == "fail"){
+                $('.p2emsg').removeClass('p2hidden');
+                $('.p2emsg').show();
+            }
+            }
+        });
+            return false;
+        });
+  });
+      // window.onload = function () {
+      //   document.getElementById("password1").onchange = validatePassword;
+      //   document.getElementById("password2").onchange = validatePassword;
+      // }
+      // function validatePassword(){
+      //   var pass2=document.getElementById("password2").value;
+      //   var pass1=document.getElementById("password1").value;
+      //   if(pass1!=pass2)
+      //     document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+      //   else
+      //     document.getElementById("password2").setCustomValidity('');  
+      //     //empty string means no validation error
+      // }
+    </script>
+  </div>
+
+      <p class="agileits2">Not Registered !<a href="/signup" style=" cursor: pointer; color:#3970b0; "> Register Here !</p>
+  <div class="clear"></div>
+</div>
+<style>
+.eemsg{
+    color: red;
+    margin: 71px;
+}
+.ehidden {
+     display: none;
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<%- include header %>
+
+<div class="container">
+  <div class="row">
+	<div class=" col-md-8 c">
+		<video controls style="margin-top: 10px; " autoplay="autoplay">
+      <source src="/<%= data[0].url %>" type="video/mp4" >
+    </video>
+        <h4><%= data[0].title %></h4>
+        <h4><%= data[0].views %> Views</h4>
+	</div>
+	<div class="col-md-4" style="margin-top: 110px;height: 390px;overflow: scroll;">
+	<div class="row">
+  <% for(var i=0;i< data2.length;i++){ %>
+  <a href="/play/<%= data2[i].id %>">
+  <div class="col-md-5">
+    <img class="img-responsive" src="\<%= data2[i].image %>" style = "width: 100%;">
+    <h4 class="t"><%= data2[i].duration %> </h4> 
+  </div>
+  <div style="margin-top: 10px; margin-left: 15px; position: relative;">
+    <h3 style="font-weight: bold;font-size:18px;min-height:40px;"><%= data2[i].title %></h3> 
+    <p style="margin-top: 1.5em;clear: both;"><span class=" fa fa-eye view-icon" style="color: #5e120d"></span> <%= data2[i].views %> Views </p>
+  </div>
+</a>
+<hr>
+<% } %>
+</div>
+	</div>
+  </div>
+</div>
+  
+
+<div class="container">
+  <div class="row" id="comment">
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="page-header">
+            <h3 class="reviews">Leave your comment</h3>
+        </div>
+        <div class="comment-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+            </ul>            
+            <div class="tab-content">
+                <div class="tab-pane active" id="comments-logout">                
+                    <ul class="media-list">
+                      <% for(var i=0;i< data3.length;i++) { %>
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews"><%= data3[i].name %> </h4>
+                              <p class="media-date"> <%= data3[i].time %> </p>
+                              <p class="media-comment">
+                                <%= data3[i].comments %>
+                              </p>
+                          </div>              
+                        </div>
+                        
+                      </li>       
+                      <% } %>
+                    </ul> 
+                </div>
+                <div class="tab-pane" id="add-comment">
+                    <form action="/comment" method="post" class="form-horizontal" id="commentForm" role="form"> 
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                              <input type="text" name="name" class="form-control" id="addComment">
+                              <input type="hidden" name="id" class="form-control" id="addComment" value="<%= data[0].id %>" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailid" class="col-sm-2 control-label" >Email Id</label>
+                            <div class="col-sm-10">
+                              <input type="email" name="email" class="form-control" id="addComment">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label" >Comment</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">                    
+                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                            </div>
+                        </div>            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div >
+  <!-- row ends -->
+</div>
+
+
+
+<%- include footer %>
+
+</body>
+
+<style type="text/css">
+	video{
+		max-width: 100%;
+		height: auto;
+	}
+	.c{
+		margin-top: 100px;
+		margin-bottom: 20px;
+	}
+	hr{
+		border-top: 1px solid black;
+		margin-left: 15px;
+	}
+
+	.image1{
+		margin-top: 10px;  ;width:100%;height: 75px;border-radius: 5px;box-shadow: 0px 0px 10px yellow;
+	}
+	.t{
+		position: absolute;background-color: black;color: white;right: 15px;bottom:  0em;padding: 2px; border-radius: 5px;
+	}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+.image{
+        height:300px;
+        border-radius: 5px;
+    }
+    .t{
+    	position: absolute;;background-color: black;color: white;right: 59px;box-shadow: 0em;
+    }
+   .img-responsive{
+    	border-radius: 5px;
+    }
+}
+</style>
+</html

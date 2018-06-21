@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Payment Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        <div class="invoice-title">
+                
+               <h2>Pay</h2><h3 class="pull-right"></h3>
+        </div>
+        <hr>
+        
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+              <strong>Email:</strong><br>
+        
+              <%= data[0].email %>
+            </address>
+          </div>
+          <div class="col-xs-6 text-right">
+            <address>
+              <strong>Order Date:</strong><br>
+              <%= data[0].date_time %><br><br>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="container">   
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Order summary</strong></h3>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-condensed">
+                <thead>
+                    <tr>
+                      <td><strong>Name</strong></td>
+                      <td class="text-center"><strong>Number</strong></td>
+                      <td class="text-center"><strong>Address</strong></td>
+                      <td class="text-center"><strong>Membership</strong></td>
+                      <td class="text-center"><strong>Order Id</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="no-line"><%= data[0].fname %></td>
+                    <td class="no-line text-center"><%= data[0].cno %></td>
+                    <td class="no-line text-center"><%= data[0].address %></td>
+                    <td class="no-line text-center"><%= data[0].payment_method %></td>
+                    <td class="no-line text-center"><%= data[0].payment_id %></td>
+                  </tr>
+                  <tr>
+                    <td class="no-line"></td>
+                    <td class="no-line"></td>
+                     <td class="no-line"></td>
+                    <td class="no-line text-center"><strong>Total</strong></td>
+                    <td class="no-line text-center"> &#8377 <%= data[0].Pay_price%></td>
+                  </tr>
+                </tbody>
+              </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <a href="/cancelCart"><button class="btn btn-primary" style="float: right;">Cancel</button></a>
+</div>
+</div>
+<hr style=" border-color:black; border-width: 1px;" class="form-group">
+
+<form action="/your-server-side-code" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+    data-amount="<%= data[0].Pay_price * 100%>"
+    data-name="Teledoor"
+    data-description="Make Payment"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-currency = "inr"
+    data-email = "teledoor@gmail.com">
+  </script>
+</form>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

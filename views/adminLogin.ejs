@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/adminlogin.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    if (!!window.performance && window.performance.navigation.type === 2) {
+              // value 2 means "The page was accessed by navigating into the history"
+             
+              window.location.reload(); // reload whole page
+  
+          }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="card card-container">
+            <img  class="img-rounded" src="/images/adminLogo.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" method="post" id="frm" action="/welcome">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" name="inputUser" id='inputUser'class="form-control" placeholder="Username" required autofocus >
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="checkCnfrm"></div>
+                <button class="btn btn-lg btn-inverse btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            
+        </div>
+    </div>
+</body>
+<style type="text/css">
+    
+body {
+    background-color: lightgrey;
+}
+
+</style>
+<script>
+$(document).ready(function(){
+    
+    $('#frm').on('submit',function(){
+        var loginData ={'inputUser':$("#inputUser").val(),'inputPassword':$("#inputPassword").val()};
+        $.ajax({
+            url: "/welcome",
+            type: "POST",
+            data: loginData,
+            success: function(data)
+            {
+            console.log(data);
+            if(data == "done")
+            {
+                $('#checkCnfrm').hide();
+                window.location = "/dashboard";
+            }
+            else{
+                $("#checkCnfrm").html('<div id="myAlert" class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Note!</strong>' + data +'</div>');
+            }
+            }
+        });
+        return false;
+    });
+    
+});
+    </script>
+</html>

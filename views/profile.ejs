@@ -1,0 +1,161 @@
+<%- include header %> 
+
+<div class="container-fluid" style="padding-top: 42px;padding-bottom: 42px;">
+    <div class="row">
+        
+            <div style="padding-top:50px;"> </div>
+            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="media">
+                            <div align="center">
+                                <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                            </div>
+
+                            <div class="media-body">
+                                <hr>
+                                <h3><strong>First Name</strong></h3>
+                                <p> <%= data[0].firstname %> </p>
+                                <hr>
+                                <h3><strong>Last Name</strong></h3>
+                                <p><%= data[0].lastname %></p>
+                                <hr>
+                                <h3><strong>Email</strong></h3>
+                                <p><%= data[0].email %></p>
+                                <hr>
+                                <h3><strong>Plan</strong></h3>
+
+                                <div class="container-fluid paddingtopbottom">
+                                    <div class="container">
+                                        <br>
+                                        <div class="row">
+                                          <div class="col-md-4" style="width: 20%;">
+                                            <div class="panel panel-default text-center">
+                                                <div class="panel-heading">
+                                                  <h1><%= data[0].Pay_title %></h1>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <p><strong><%= data[0].Pay_uploadsmonth %></strong> uploads per month</p>
+                                                    <p><strong>For <%= data[0].Pay_duration_months %></strong>
+                                                    <% if ( data[0].Pay_duration_months < 2 ) { %>
+                                                       month only 
+                                                     <% } else { %>
+                                                      months only 
+                                                      <% } %>
+                                                    </p>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <h3>&#8377 <%= data[0].Pay_price %></h3>
+                                                    <h4>per month</h4>
+                                                    <a href="/"><button class="btn btn-lg">Change Plan</button></a>
+                                                </div>
+                                            </div> 
+                                          </div>
+                                         
+                                        </div>  
+                                    </div>
+                                </div>
+                                    <a href="#" class="changepass"><button class="btn btn-lg btn-primary " style="margin-left: 45.999px;border-radius: 0px;background-color: #0d455e">Change Password</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <span>
+                        <h1 class="panel-title pull-left" style="font-size:30px;"><small><%= data[0].email %></small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
+                        <div class="dropdown pull-right">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                Upload
+                            </button>
+                         </div>
+
+                            <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h1 class="modal-title">Upload</h1>
+                                            </div>
+                                        <form action="/upload" method="post" enctype="multipart/form-data">
+                                           <div class="modal-body">
+                                            <form action="/paymentuser" method="post">
+    
+                                            <div class="form-group">
+                                            <label for="Name">Title:</label>
+                                              <input type="text" class="form-control" name="utitle">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="Name">Image:</label>
+                                              <input type="file" class="form-control"   name="uimage">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="Name">File:</label>
+                                              <input type="file" class="form-control"   name="uurl">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="Name">Duration:</label>
+                                              <input type="text" class="form-control"   name="uduration">
+                                            </div>                                            
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                     <button class="btn submit-button">Upload</button>
+                                                 
+                                            </div>  
+                                        </form>      
+                                         </div>
+                                    </div>    
+                            </div><br><br>
+                            <hr>
+                    </span>
+                </div>
+            </div>
+        <hr>
+           
+            <!-- Sample post content with picture. -->
+            <% for (var i = 0 ; i < data1.length ; i++ ) { %>
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                 
+                    <div class="pull-left">
+                        <a href="#">
+                            <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+                        </a>
+                    </div>
+                    <h4><a href="#" style="text-decoration:none;"><strong> <%=data[0].firstname %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                    
+                    <span>
+                        <div class="navbar-right">
+                            <div class="dropdown">
+                                <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
+                                    <li><a href="/deleteUpload/<%= data1[0].id %>"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </span>
+
+                    <hr>
+                    <div class="post-content">
+                        <video controls style="margin-top: 10px; width: 50%">
+                            <source src="/<%= data1[i].url %>" type= "video/mp4" >
+                        </video>
+                    </div>
+                    
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+<%- include footer %>
+</body>
+</html>

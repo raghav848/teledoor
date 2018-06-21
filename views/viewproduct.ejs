@@ -1,0 +1,23 @@
+<%- include menu %>
+	<form action="/viewC/deleteProductchecks" method="POST">
+		<table border="2" cellpadding="10" cellspacing="10" width="50%">
+			<% for(var i = 0; i < data.length; i++) { %>
+				<tr>
+                    <td> <%= data[i].Cid %> </td>
+					<td> <%= data[i].Pid %> </td>
+					<td> <%= data[i].Pname %> </td>
+					<td> <%= data[i].Pimge %> </td>
+					<td> <%= data[i].Pdesc %> </td>
+                    <td> <%= data[i].Pstatus %> </td>
+
+					<td> <a href="/viewP/deleteProduct/<%= data[i].Pid%>">Delete</a> </td>
+					<td> <a href="/viewP/updateProductForm/<%= data[i].Pid %>">Update</a> </td>
+
+					<td> <input type="checkbox" name="check" value="<%= data[i].Pid %>"> delete <%= data[i].Pid %> </td>
+				</tr>
+			<% } %>
+		</table><br>
+		<input type="submit" name="submit" value="Delete Selected">
+	</form>
+</body>
+</html>

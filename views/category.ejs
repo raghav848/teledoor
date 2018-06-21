@@ -1,0 +1,77 @@
+<% include menu %>
+
+<div class="container">
+
+  <% if(typeof data !='undefined'){ %>
+
+    <form action="/viewC/updateCategory/<%= data[0].Cid %>" method="post">
+
+      <div class="form-group">
+        <label>Category Name</label>
+        <input type="text" name="Cname" class="form-control" value="<%= data[0].Cname %>">
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label>Category Description</label>
+        <input type="text" name="Cdesc" class="form-control" value="<%= data[0].Cdesc %>">
+      </div>
+      <br>     
+
+<div class="form-group">
+   <label>Status</label>
+    <select name="option" class="form-control">
+  <option  class="active">Select</option>
+  <option>active</option>
+  <option>block</option>
+</select>
+</div>
+<br>  
+      <div class="form-group">
+      <input type="submit" name="sbtn" class="btn btn-primary">
+      </div>
+      <br>
+
+  </form>
+
+  <% } else  {%>
+    <form action="/categoryform" method="post">
+
+      <div class="form-group">
+        <label>Category Name</label>
+        <input type="text" name="Cname" class="form-control">
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label>Category Description</label>
+        <input type="text" name="Cdesc" class="form-control">
+      </div>
+      <br>     
+
+<div class="form-group">
+   <label>Status</label>
+    <select name="option" class="form-control">
+  <option  class="active">Select</option>
+  <option>active</option>
+  <option>block</option>
+</select>
+</div>
+<br>  
+      <div class="form-group">
+      <input type="submit" name="sbtn" class="btn btn-primary">
+      </div>
+      <br>
+
+  </form>
+  <% } %>
+</div>
+
+</body>
+
+<style type="text/css">
+  body{
+    background-color: lightgrey;
+  }
+</style>
+</html>

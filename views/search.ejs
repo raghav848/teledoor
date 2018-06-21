@@ -1,0 +1,53 @@
+<%- include header %>
+
+<div class="container-fluid paddingtopbottom bg-grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="sub-heading">Search Results:</h2>
+      </div>
+    </div>
+    <br>
+    <%  if(typeof data=='undefined') { %>
+  <p> NO RESULT FOUND ! </p>
+  <% } else {%>
+    <% 
+    c = 1;
+    for(var i=0;i< data.length;i++){ %>
+      <% if (c == 1 || c == 6){ %>
+        <div class="row">
+      <% } %>
+        <div class="col-md-2" style="margin-top: 2em;">
+          <div>
+          	<% if(data[i].Cid==11) { %>
+          		<a href="/mplay/<%= data[i].Pid%>" class="image1">
+          	<% } else if( data[i].Cid==12) {%>
+          		<a href="/tplay/<%= data[i].Pid%>" class="image1">
+          	<% } %>
+              <img class="img-responsive" src="<%= data[i].Pimge %>" style = "width:100%;height: 250px;border-radius: 5px;box-shadow: 0px 0px 25px grey;">      
+              <h3 style="font-weight: bold;font-size:18px;min-height:40px;text-transform: uppercase;margin-top: 1em;margin-bottom: 1em;"> <%= data[i].Pname %> </h3>
+ 				</a>
+          </div>
+        </div>
+      <% 
+      if(c == 6 || c == 11)
+      {
+        %>
+        </div>
+        <%
+      }
+      c++; 
+    } 
+    %>
+  <% } %>
+  </div>
+</div>
+<style type="text/css">
+	.container-fluid{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+</style>
+<%- include footer%>
+</body>
+</html>
