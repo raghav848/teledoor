@@ -1,0 +1,41 @@
+html,body 
+{
+	font-family: 'Titillium Web', sans-serif;
+	letter-spacing: 2px;
+	line-height: 30px;
+	font-size: 18px;
+}
+.services
+{
+	transition: all 1s;
+}
+.services:hover
+{
+	background-color: white;
+	color: black;
+	border:1px solid #35404f;
+	cursor: pointer;
+}
+.services:hover > h2
+{
+	color: black;
+}
+.logo{
+	
+}
+#search-bar{
+	float: left;
+	padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
+#h{
+	background-color: #35404f;
+}
+
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
