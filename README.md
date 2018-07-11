@@ -1,2 +1,2 @@
 # teledoor
-movie-streamong
+movie-streaming 
